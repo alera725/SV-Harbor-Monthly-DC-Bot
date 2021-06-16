@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait # Guardar en las paginas
 from selenium.webdriver.support import expected_conditions as EC #Guardar en las paginas import unittest
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+import time 
 
 class initial_page():
     def __init__(self,my_driver):
@@ -21,6 +22,7 @@ class initial_page():
         
     def start_session(self,email,passwd):
         try:
+            time.sleep(5)
             user_label = WebDriverWait(self.driver,20).until(EC.visibility_of_element_located(self.userr)) #self.driver.find_element_by_id(self.dates_filter_button)
             user_label.send_keys(email)
             passwd_label = WebDriverWait(self.driver,20).until(EC.visibility_of_element_located(self.passwordd))

@@ -16,12 +16,15 @@ from selenium.common.exceptions import TimeoutException
 class whole_sale_page():
     def __init__(self,my_driver):
         self.driver = my_driver
-        self.wholesalee = (By.XPATH, '/html/body/div[1]/main/div[2]/div/div[2]/div[1]/div/div[2]/div[1]/a/img')
+        self.wholesalee = (By.XPATH, '/html/body/div[1]/main/div[3]/div/div[2]/div[1]/div/div[2]/div[1]/a') 
         
     def wholesale(self):
         try:
-            button_login = WebDriverWait(self.driver,20).until(EC.visibility_of_element_located(self.wholesalee))
-            button_login.click()
+            
+            button = WebDriverWait(self.driver,50).until(EC.element_to_be_clickable(self.wholesalee))
+            button.click()
+            
         except TimeoutException:
             print ("Loading -wholesale- took too much time!")
+
 
